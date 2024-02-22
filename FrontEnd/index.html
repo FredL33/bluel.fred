@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+    </body>
+    <script src="./script.js" defer></script>
+    <script defer src="./tuto.js"></script>
+    <title>portfolio</title>
+</head>
+<body>
+    <header>
+                                <!-- partie gauche du header -->
+        <img src="./logo.svg" alt="Sophie Bluel Architecte d'Intérieur">
+
+                                <!-- partie gauche du header -->
+        <nav class="navbar">
+            <ul>
+                <a href="">
+                    <li>Projets</li>
+                </a>
+                <a href="#titleContact">
+                    <li>Contact</li>
+                </a>
+                <a href="./login.html">
+                    <li>Login</li>
+                </a>
+                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+                        <!-- présentation -->
+    <main class="present">
+        <section class="presentation">
+                        <!-- photo -->
+            <div class="photo"> 
+                <img src="./images/sophie-bluel.png" alt="sophie-bluel">
+            </div>
+                        <!-- speech -->
+            <div class="content">
+                <div id="title">
+                    <h2>Mon projet</h2>
+                </div>
+                <div class="speech">
+                    <p>
+                        Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la
+                        livraison
+                        finale du chantier.
+
+                        Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et
+                        les
+                        couleurs dans le respect de l’esprit des lieux, et le choix adapté des matériaux. Le suivi du
+                        chantier sera assuré dans le souci du détail, le respect du planning et du budget.
+
+                        En cas de besoin, une équipe pluridisciplinaire peut être constituée : architecte DPLG,
+                        décorateur(trice).
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="myProjects">
+            <div id="title">
+                <h2>Mes Projets</h2>
+            </div>
+            <div class="filtres"></div>
+            <div id="projets"></div>
+        </section>
+        <section class="contact">
+            <div id="titleContact">
+                <h2>Contact</h2>
+            </div>
+            <div class="question">
+                <p>Vous avez un projet ? Discutons-en !</p>
+            </div>
+            <div class="form">
+                <label for="story">Nom:</label><br>
+                <span>
+                    <input class="inputs" type="text">
+                </span><br>
+                <label for="story">E-mail:</label><br>
+                <span>
+                    <input class="inputs" type="text">
+                </span><br>
+                <label for="story">Message:</label><br>
+                <textarea class="message" name="mess" id="" cols="100" rows="20"></textarea>
+                </span>
+            </div>
+        </section>
+        <footer>
+            <button><a href="">Envoyer</a></button>
+        </footer>
+        <div class="endpage">
+            <a href=""><p>Mentions légales</p></a>
+        </div>
+</body>
+
+</html>

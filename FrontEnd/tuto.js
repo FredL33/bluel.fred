@@ -96,7 +96,7 @@ async function recupererTousMesProjets() {
 
   const works = await fetchAPI("http://localhost:5678/api/works");
   const sectionProjet = document.querySelector("#projets");
-  // if (works && sectionProjet)
+  if (works && sectionProjet)
   displayWorks(works, sectionProjet);
 
   const filtresDiv = document.querySelector(".filtres");

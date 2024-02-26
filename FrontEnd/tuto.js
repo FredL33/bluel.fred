@@ -1,3 +1,5 @@
+
+
 console.log("teste")
 // Fonction pour récupérer des données depuis une API de manière asynchrone
 async function fetchAPI(url, options = {}) {
@@ -141,6 +143,7 @@ async function handleFormSubmission(event) {
     email,
     password,
   });
+ 
 
   // Si la réponse est positive (statut 200), stocke les informations de l'utilisateur et redirige vers la page d'accueil
   if (response && response.status === 200) {
@@ -149,13 +152,51 @@ async function handleFormSubmission(event) {
     localStorage.setItem("user", JSON.stringify(response.data.userId));
     localStorage.setItem("token", response.data.token);
     // Redirige l'utilisateur vers la page d'accueil
-    location.href = "index.html";
+    location.href = "index.html"; 
   } else {
     // Si les identifiants sont incorrects, affiche un message d'erreur
     document.getElementById("error-message").textContent =
-      "Identifiant ou mot de passe incorrect";
+      "Identifiant ou mot de passe incorrect"; 
   }
 }
+
+const handleLogout = () =>{
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  location.reload();
+  const email = document.querySelector("#login-email").value;
+  const password = document.querySelector("#login-password").value;
+  email.value = ("");
+  password.value = ("")
+}
+const tokenAuth = localStorage.getItem("token");
+const essai = () =>{
+  if (tokenAuth){
+  const adminBar = document.getElementById("adminBar").style.display = ("flex");
+  const log = document.querySelector(".log").textContent = ("logout");
+  const filtres = document.querySelector(".filtres");
+  filtres.style.display = ("none");
+} else {
+  adminBar.style.display = ("none")
+  log.textContent = ("Log In")
+}
+}
+essai()
+
+
+const logOut = document.querySelector(".log");
+
+logOut.addEventListener("click", () => {
+  handleLogout()
+})
+//  if(token === undefined){
+//  document.getElementById("hid").style.display = ("none")
+// } else {
+//   document.getElementById("hid").style.display = "flex"
+// }
+
+// let modif = document.querySelector("#blackBbar.button")
+// console.log(modif);
 
 // Sélectionne le formulaire de connexion dans le DOM
 const form = document.getElementById("login");

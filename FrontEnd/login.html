@@ -23,32 +23,35 @@
 
 <body>
     <header>
+        
+        <div class="up">
         <!-- partie gauche du header -->
         <img src="./logo.svg" alt="Sophie Bluel Architecte d'Intérieur">
 
         <!-- partie gauche du header -->
         <nav class="navbar">
             <ul>
-                <a href="">
+                <a href="./index.html">
                     <li>Projets</li>
                 </a>
                 <a href="">
                     <li>Contact</li>
                 </a>
-                <a href="./index.html">
-                    <li>Logout</li>
+                <a href="./index.html" class="log">
+                    <li>login</li>
                 </a>
                 <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
             </ul>
         </nav>
+    </div>
     </header>
    <div id="login">
     <div id="title"><h2>Log In</h2></div>
     <div id="register">
         <form action="#" method="post">
-            <label for="login-email">E-mail</label>
+            <label for="login-email">E-mail</label><br>
             <input type="email" id="login-email" name="email" required /><br>
-            <label for="login-password">Mot de passe</label>
+            <label for="login-password">Mot de passe</label><br>
             <input type="password" id="login-password" name="password" required /><br>
             <input type="submit" value="Se connecter" />
         </div>

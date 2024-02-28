@@ -22,28 +22,23 @@
 </head>
 
 <body>
-    <header>
-        
-        <div class="up">
-        <!-- partie gauche du header -->
-        <img src="./logo.svg" alt="Sophie Bluel Architecte d'Intérieur">
-
-        <!-- partie gauche du header -->
-        <nav class="navbar">
-            <ul>
-                <a href="./index.html">
-                    <li>Projets</li>
-                </a>
-                <a href="">
-                    <li>Contact</li>
-                </a>
-                <a href="./index.html" class="log">
-                    <li>login</li>
-                </a>
-                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-            </ul>
+    <div id="admin-bar" class="admin-bar hidden">
+        <button id="edit-mode-btn" class="open-modal">
+          <i class="fa-regular fa-pen-to-square"></i>
+          <p>Mode édition</p>
+        </button>
+      </div>
+      <header id="header-margin">
+        <img src="./logo.svg" alt="">
+        <nav>
+          <ul>
+            <li><a href="index.html">projets</a></li>
+            <li><a href="#contact">contact</a></li>
+            <li><a href="login.html" alt="login" id="login-link">login</a></li>
+            <li><i class="fa-brands fa-instagram"></i></li>
+          </ul>
         </nav>
-    </div>
+      </header>
     </header>
    <div id="login">
     <div id="title"><h2>Log In</h2></div>
@@ -55,13 +50,16 @@
             <input type="password" id="login-password" name="password" required /><br>
             <input type="submit" value="Se connecter" />
         </div>
-    </div>
-    <footer>
+    
         <div class="forgot"><a href="">Mot de passe oublié</a></div>
-    </footer>
-    <div class="endpage">
-        <a href=""><p>Mentions légales</p></a>
     </div>
+        <footer>
+            <nav>
+              <ul>
+                <li class="mentions">Mentions Légales</li>
+              </ul>
+            </nav>
+          </footer>
     
 </body>
 

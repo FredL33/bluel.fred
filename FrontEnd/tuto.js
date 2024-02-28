@@ -1,6 +1,3 @@
-
-
-console.log("teste")
 // Fonction pour récupérer des données depuis une API de manière asynchrone
 async function fetchAPI(url, options = {}) {
   try {
@@ -97,9 +94,8 @@ async function recupererTousMesProjets() {
   console.log("Page entièrement chargée");
 
   const works = await fetchAPI("http://localhost:5678/api/works");
-  const sectionProjet = document.querySelector("#projets");
-  if (works && sectionProjet)
-  displayWorks(works, sectionProjet);
+  const sectionProjet = document.querySelector(".projets");
+  if (works && sectionProjet) displayWorks(works, sectionProjet);
 
   const filtresDiv = document.querySelector(".filtres");
   if (works && filtresDiv) setupButtons(works, filtresDiv, sectionProjet);
@@ -137,66 +133,28 @@ async function handleFormSubmission(event) {
   // Récupère les valeurs saisies par l'utilisateur dans les champs du formulaire
   const email = document.querySelector("#login-email").value;
   const password = document.querySelector("#login-password").value;
- 
+
   // Envoie une requête asynchrone à l'API pour tenter de connecter l'utilisateur
   const response = await postToAPI("http://localhost:5678/api/users/login", {
     email,
     password,
   });
- 
 
   // Si la réponse est positive (statut 200), stocke les informations de l'utilisateur et redirige vers la page d'accueil
   if (response && response.status === 200) {
     console.log("connexion utilisateur réussie");
     // Stocke l'identifiant de l'utilisateur et le token dans le stockage local du navigateur
+
     localStorage.setItem("user", JSON.stringify(response.data.userId));
     localStorage.setItem("token", response.data.token);
     // Redirige l'utilisateur vers la page d'accueil
-    location.href = "index.html"; 
+    location.href = "index.html";
   } else {
     // Si les identifiants sont incorrects, affiche un message d'erreur
     document.getElementById("error-message").textContent =
-      "Identifiant ou mot de passe incorrect"; 
+      "Identifiant ou mot de passe incorrect";
   }
 }
-
-const handleLogout = () =>{
-  localStorage.removeItem("user");
-  localStorage.removeItem("token");
-  location.reload();
-  const email = document.querySelector("#login-email").value;
-  const password = document.querySelector("#login-password").value;
-  email.value = ("");
-  password.value = ("")
-}
-const tokenAuth = localStorage.getItem("token");
-const essai = () =>{
-  if (tokenAuth){
-  const adminBar = document.getElementById("adminBar").style.display = ("flex");
-  const log = document.querySelector(".log").textContent = ("logout");
-  const filtres = document.querySelector(".filtres");
-  filtres.style.display = ("none");
-} else {
-  adminBar.style.display = ("none")
-  log.textContent = ("Log In")
-}
-}
-essai()
-
-
-const logOut = document.querySelector(".log");
-
-logOut.addEventListener("click", () => {
-  handleLogout()
-})
-//  if(token === undefined){
-//  document.getElementById("hid").style.display = ("none")
-// } else {
-//   document.getElementById("hid").style.display = "flex"
-// }
-
-// let modif = document.querySelector("#blackBbar.button")
-// console.log(modif);
 
 // Sélectionne le formulaire de connexion dans le DOM
 const form = document.getElementById("login");
@@ -204,3 +162,50 @@ const form = document.getElementById("login");
 if (form) {
   form.addEventListener("submit", handleFormSubmission);
 }
+
+// Fonction appelée pour déconnecter l'utilisateur
+const handleLogout = () => {
+  // Supprime les informations de l'utilisateur et le token d'authentification du stockage local
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  // Recharge la page pour refléter l'état déconnecté de l'utilisateur
+  location.reload();
+  // Réinitialise les champs du formulaire de connexion pour effacer les entrées précédentes
+  const emailElem = document.getElementById("login-email");
+  const passwordElem = document.getElementById("login-password");
+  if (emailElem && passwordElem) {
+    emailElem.value = "";
+    passwordElem.value = "";
+  }
+};
+
+// Vérifie si un token d'authentification est présent et ajuste l'interface en conséquence
+function checkTokenLogin() {
+  // Récupère le token d'authentification du stockage local
+  const tokenAuth = localStorage.getItem("token");
+  // Sélectionne différents éléments de l'interface
+  const loginLink = document.getElementById("login-link");
+  const adminBar = document.getElementById("admin-bar");
+  const allFilterBtn = document.querySelector(".filtres");
+  console.log(allFilterBtn);
+  const modifierBtn = document.getElementById("add-project-btn");
+
+  // Si un token est présent, ajuste l'interface pour un utilisateur connecté
+  if (tokenAuth) {
+    loginLink.textContent = "logout"; // Change le texte du lien de connexion en "logout"
+    // Rend visible la barre d'administration et le bouton de modification, et cache le bouton de filtre
+    if (adminBar) adminBar.classList.remove("hidden");
+    if (allFilterBtn) allFilterBtn.classList.add("hidden");
+    if (modifierBtn) modifierBtn.classList.remove("hidden");
+    // Ajoute un écouteur d'événement pour gérer la déconnexion
+    loginLink.addEventListener("click", handleLogout);
+  } else {
+    // Ajuste l'interface pour un utilisateur non connecté
+    loginLink.textContent = "login"; // Garde ou remet le texte du lien en "login"
+    // Cache la barre d'administration et le bouton de modification
+    if (adminBar) adminBar.classList.add("hidden");
+    if (modifierBtn) modifierBtn.parentNode.removeChild(modifierBtn);
+  }
+}
+checkTokenLogin()
+

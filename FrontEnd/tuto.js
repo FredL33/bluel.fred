@@ -187,7 +187,6 @@ function checkTokenLogin() {
   const loginLink = document.getElementById("login-link");
   const adminBar = document.getElementById("admin-bar");
   const allFilterBtn = document.querySelector(".filtres");
-  console.log(allFilterBtn);
   const modifierBtn = document.getElementById("add-project-btn");
 
   // Si un token est présent, ajuste l'interface pour un utilisateur connecté
@@ -209,3 +208,109 @@ function checkTokenLogin() {
 }
 checkTokenLogin()
 
+// Fonction pour afficher ou masquer la modale
+function toggleModal(isVisible) {
+  const editModal = document.getElementById("edit-modal");
+
+  if (editModal) {
+    // Ajoute ou retire la classe "hidden" en fonction de l'argument isVisible
+    editModal.classList.toggle("hidden", !isVisible);
+  }
+}
+
+function openModal() {
+  // Sélectionne tous les boutons qui ouvrent la modale
+  const allEditBtn = document.querySelectorAll(".open-modal");
+  // Pour chaque bouton, ajoute un écouteur d'événement qui ouvre la modale
+
+  allEditBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggleModal(true); // Affiche la modale
+
+      // Clone le contenu existant des projets pour l'afficher dans la modale
+
+      const existingProjects = document
+        .querySelector(".projets")
+        .cloneNode(true);
+      const modalProjects = document.getElementById("existing-projects");
+      modalProjects.innerHTML = ""; // Vide le contenu actuel
+      // Pour chaque image dans les projets clonés, crée un conteneur et l'ajoute à la modale
+      existingProjects.querySelectorAll("img").forEach((img) => {
+        const imgContainer = document.createElement("div");
+        imgContainer.setAttribute("class", "img-container");
+        imgContainer.setAttribute("data-id", img.closest("figure").dataset.id);
+        imgContainer.innerHTML = `${img.outerHTML}<button class="delete-icon"><i class="fa-solid fa-trash-can"></i></button>`;
+        modalProjects.appendChild(imgContainer);
+      });
+    });
+  });
+}
+openModal();
+
+const closeModal = () => {
+  // Sélectionne les boutons de fermeture de la modale
+  const closeModalButtons = document.querySelectorAll(
+    "#close-modal, #close-modal-form"
+  );
+  // Ajoute un écouteur d'événement sur chaque bouton pour fermer la modale
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => toggleModal(false));
+  });
+  const editModal = document.getElementById("edit-modal");
+  // Ferme la modale si l'utilisateur clique en dehors du contenu de la modale
+  if (editModal) {
+    editModal.addEventListener("click", (event) => {
+      const modalContent = document.querySelector(".modal-content");
+      const modalContentForm = document.querySelector(".modal-content-form");
+      if (
+        !modalContent.contains(event.target)
+        &&
+        !modalContentForm.contains(event.target)
+      ) {
+        toggleModal(false);
+      }
+    });
+  }
+};
+closeModal();
+
+function toggleAdd () {
+  const addPicture = document.getElementById("add-photo");
+  const modalContent = document.querySelector(".modal-content");
+  const backToModal = document.getElementById("back-form-modal");
+  const modalForm = document.querySelector(".modal-content-form")
+  if (modalContent) {
+    addPicture.addEventListener("click", ()=>{
+    modalContent.classList.add("hidden"); 
+      })
+  }
+  if(modalForm){
+    backToModal.addEventListener("click", ()=> {
+      modalContent.classList.remove("hidden")
+    })
+  }
+  }
+toggleAdd();
+
+function deleteBtn (id) {
+
+  const deleteBtn = document.querySelectorAll(".delete-icon");
+  const tokenAuth = localStorage.getItem("token");
+  deleteBtn.forEach((button) => {
+    if (tokenAuth) {
+      button.addEventListener("click", async () => {
+      delete figure.id()
+    })
+  } 
+  })
+}
+deleteBtn()
+// formElem.onsubmit = async (e) => {
+//   e.preventDefault();
+//   let response = await fetch('http://localhost:5678/api/works', {
+//     method: 'POST',
+//     body: new FormData(formElem)
+//   });
+//   let result = await response.json();
+//   alert(result.message)
+// }

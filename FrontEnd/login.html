@@ -1,66 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur - login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
-    </body>
-    <!-- <script src="./script.js" defer></script> -->
-    <script defer src="./tuto.js"></script>
-    <title>login page</title>
-</head>
-
-<body>
-    <div id="admin-bar" class="admin-bar hidden">
-        <button id="edit-mode-btn" class="open-modal">
-          <i class="fa-regular fa-pen-to-square"></i>
-          <p>Mode édition</p>
-        </button>
-      </div>
-      <header id="header-margin">
-        <img src="./logo.svg" alt="">
-        <nav>
-          <ul>
-            <li><a href="index.html">projets</a></li>
-            <li><a href="#contact">contact</a></li>
-            <li><a href="login.html" alt="login" id="login-link">login</a></li>
-            <li><i class="fa-brands fa-instagram"></i></li>
-          </ul>
-        </nav>
-      </header>
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">projets</a></li>
+          <li><a href="index.html#contact">contact</a></li>
+          <li><a href="login.html" id="login-link">login</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
     </header>
-   <div id="login">
-    <div id="title"><h2>Log In</h2></div>
-    <div id="register">
+    <!-- FORMULAIRE à intégrer -->
+    <main>
+      <div id="login">
+        <h2>Log In</h2>
         <form action="#" method="post">
-            <label for="login-email">E-mail</label><br>
-            <input type="email" id="login-email" name="email" required /><br>
-            <label for="login-password">Mot de passe</label><br>
-            <input type="password" id="login-password" name="password" required /><br>
-            <input type="submit" value="Se connecter" />
-        </div>
-    
-        <div class="forgot"><a href="">Mot de passe oublié</a></div>
-    </div>
-        <footer>
-            <nav>
-              <ul>
-                <li class="mentions">Mentions Légales</li>
-              </ul>
-            </nav>
-          </footer>
-    
-</body>
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" name="email" required />
+          <label for="login-password">Mot de passe</label>
+          <input type="password" id="login-password" name="password" required />
+          <input type="submit" value="Se connecter" />
+          <p id="error-message" class="error-message"></p>
+        </form>
+        <a href="#" id="forgot-password">Mot de passe oublié</a>
+      </div>
+    </main>
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
 
+    <!-- <script type="module" src="./Main.js"></script> -->
+    <!-- <script src="All-Javascript.js"></script> -->
+    <!-- <script src="All-Javascript-base.js"></script> -->
+    <script src="tuto.js"></script>
+  </body>
 </html>
